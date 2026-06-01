@@ -3,13 +3,8 @@ import { cardsData } from '../../data/cardsData';
 import Button from '../../components/button';
 
 function ProductDetail() {
-    // useParams URL se "id" nikalega (e.g., /product/3 me se 3 nikalega)
     const { id } = useParams();
-
-    // Data array me se matching id wala product dhoondo
     const product = cardsData.find((item) => item.id === parseInt(id));
-
-    // Agar product nahi milta toh error message dikhao
     if (!product) {
         return (
             <div className="container mx-auto p-8 text-center">
@@ -24,7 +19,6 @@ function ProductDetail() {
             <Link to="/" className="text-sm font-semibold text-blue-600 hover:underline mb-6 inline-block">
                 ← Back to Home
             </Link>
-
             <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden md:flex">
                 <div className="md:w-1/2">
                     <img className="w-full h-64 md:h-full object-cover" src={product.image} alt={product.title} />

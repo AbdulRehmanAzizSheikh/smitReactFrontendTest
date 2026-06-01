@@ -2,19 +2,15 @@ import React, { useState } from 'react';
 import Button from '../../components/button';
 
 function Contact() {
-  // 1. Controlled Components ke liye Single State Object
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     message: ''
   });
 
-  // Errors handles karne ke liye state
   const [errors, setErrors] = useState({});
-  // Form submit success feedback ke liye state
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // 2. Input Change Handler (Dynamic Key Updates)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -22,13 +18,11 @@ function Contact() {
       [name]: value
     }));
 
-    // Agar user type kar raha hai toh us field ka error clear kar do
     if (errors[name]) {
       setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
     }
   };
 
-  // 3. Basic Validation Logic
   const validateForm = () => {
     let currentErrors = {};
     if (!formData.fullName.trim()) currentErrors.fullName = 'Full Name is required';
@@ -42,30 +36,19 @@ function Contact() {
     return currentErrors;
   };
 
-  // 4. Form Submission Handler
   const handleSubmit = (e) => {
-    e.preventDefault(); // Page refresh hone se rokne ke liye
-
+    e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       setIsSubmitted(false);
     } else {
-      // REQUIREMENT: Form submit hone par data console me display ho
-      console.log('--- Form Submitted Successfully ---');
-      console.log('Full Name:', formData.fullName);
+      console.log('Full name:', formData.fullName);
       console.log('Email:', formData.email);
       console.log('Message:', formData.message);
-      console.log('------------------------------------');
-
-      // Success state toggling
       setIsSubmitted(true);
       setErrors({});
-
-      // Form fields clear karne ke liye
       setFormData({ fullName: '', email: '', message: '' });
-
-      // 3 seconds baad success message hatane ke liye
       setTimeout(() => setIsSubmitted(false), 4000);
     }
   };
@@ -73,8 +56,6 @@ function Contact() {
   return (
     <div className="bg-gray-50 min-h-screen py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <div className="max-w-md w-full bg-white p-8 rounded-2xl border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-md">
-
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
             Get In <span className="text-blue-600">Touch</span>
@@ -83,8 +64,6 @@ function Contact() {
             Have questions? Fill out the form below to reach us.
           </p>
         </div>
-
-        {/* Success Toast / Notification Alert */}
         {isSubmitted && (
           <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 text-sm font-medium rounded-xl flex items-center gap-2 animate-fade-in">
             <svg className="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -94,10 +73,7 @@ function Contact() {
           </div>
         )}
 
-        {/* Form Container */}
         <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-
-          {/* Full Name Field */}
           <div>
             <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-1">
               Full Name
@@ -116,8 +92,6 @@ function Contact() {
             />
             {errors.fullName && <p className="text-xs text-red-500 font-medium mt-1">{errors.fullName}</p>}
           </div>
-
-          {/* Email Field */}
           <div>
             <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
               Email Address
@@ -136,8 +110,6 @@ function Contact() {
             />
             {errors.email && <p className="text-xs text-red-500 font-medium mt-1">{errors.email}</p>}
           </div>
-
-          {/* Message Field */}
           <div>
             <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-1">
               Message

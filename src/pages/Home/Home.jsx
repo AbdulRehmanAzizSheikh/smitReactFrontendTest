@@ -8,7 +8,7 @@ function Home() {
         {cardsData.map((card) => (
           <Card
             key={card.id}
-            id={card.id} // Yeh line lazmi add karo takay link sahi banay
+            id={card.id}
             title={card.title}
             description={card.description}
             image={card.image}
