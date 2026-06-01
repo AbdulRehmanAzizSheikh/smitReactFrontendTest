@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../../components/button';
+import { toast } from 'react-toastify';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -42,6 +43,7 @@ function Contact() {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       setIsSubmitted(false);
+      toast.error('Please fix the errors in the form before submitting.');
     } else {
       console.log('Full name:', formData.fullName);
       console.log('Email:', formData.email);
@@ -50,6 +52,7 @@ function Contact() {
       setErrors({});
       setFormData({ fullName: '', email: '', message: '' });
       setTimeout(() => setIsSubmitted(false), 4000);
+      toast.success('Your message has been sent successfully!');
     }
   };
 

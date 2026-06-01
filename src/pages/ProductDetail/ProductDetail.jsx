@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { cardsData } from '../../data/cardsData';
 import Button from '../../components/button';
+import {toast} from 'react-toastify';
 
 function ProductDetail() {
     const { id } = useParams();
@@ -29,7 +30,9 @@ function ProductDetail() {
                     <p className="text-gray-600 leading-relaxed mb-6">{product.description}</p>
                     <Button
                         variant="primary"
-                        onClick={() => alert(`Inquiry sent for ${product.title}!`)}
+                        onClick={() => {
+                            toast.success(`Inquiry sent for ${product.title}!`);
+                        }}
                     >
                         Order/Inquire Now
                     </Button>
