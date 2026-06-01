@@ -2,9 +2,9 @@ import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   // Yeh function check karega ke kaunsa page active hai aur us hisab se color badlega
-  const activeStyle = ({ isActive }) => 
-    isActive 
-      ? "text-white bg-blue-600 px-3 py-2 rounded-lg font-semibold transition-all" 
+  const activeStyle = ({ isActive }) =>
+    isActive
+      ? "text-white bg-blue-600 px-3 py-2 rounded-lg font-semibold transition-all"
       : "text-gray-300 hover:text-white hover:bg-gray-700 px-3 py-2 rounded-lg transition-all";
 
   return (

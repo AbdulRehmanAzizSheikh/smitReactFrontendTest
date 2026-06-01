@@ -3,30 +3,34 @@
 
 /* 2. Custom helper classes (Jo mapping aur text layouts ko maintain rakhengi) */
 @layer utilities {
-  /* Agar description lambi ho toh text automatically 3 lines ke baad ... me badal jaye */
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
 
-  /* Title ke liye 1 line clamp */
-  .line-clamp-1 {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
+    /* Agar description lambi ho toh text automatically 3 lines ke baad ... me badal jaye */
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* Title ke liye 1 line clamp */
+    .line-clamp-1 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 }
 
 /* 3. Smooth global scrollbar and resetting default layout behaviors */
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #f8fafc; /* Light modern gray background for the whole app */
-  color: #1e293b; /* Slate-800 soft black for modern text look */
-  scroll-behavior: smooth;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc;
+    /* Light modern gray background for the whole app */
+    color: #1e293b;
+    /* Slate-800 soft black for modern text look */
+    scroll-behavior: smooth;
 }

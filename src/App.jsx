@@ -4,26 +4,22 @@ import Footer from './components/footer';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
-import './index.css'
-
+import ProductDetail from './pages/ProductDetail/ProductDetail'; // 1. Import Karo
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        {/* Navbar Routes ke baahar hai, isliye yeh har page par FIX rahega */}
         <Navbar />
-
-        {/* Main content area jo bacha hua space cover karega */}
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            {/* 2. Dynamic Route lagao jahan ':id' ek variable hai */}
+            <Route path="/product/:id" element={<ProductDetail />} />
           </Routes>
         </main>
-
-        {/* Footer bhi Routes ke baahar hai, yeh hamesha bottom par FIX rahega */}
         <Footer />
       </div>
     </Router>
